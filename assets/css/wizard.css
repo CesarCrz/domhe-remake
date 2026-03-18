@@ -1,0 +1,368 @@
+/* domhe-interactive-form/style.css */
+:root {
+    --primary-pink: #FF98B8;  /* Pastel brand pink */
+    --primary-pink-dark: #FF7CA3; 
+    --secondary-pink: #FFE2EE; /* Very light pink background */
+    --text-color: #333333;
+    --light-gray: #F5F5F5;
+    --gray-border: #E0E0E0;
+    --white: #FFFFFF;
+    --font-family: 'Quicksand', sans-serif;
+}
+
+/* Global resets removed to prevent overriding the main site styles */
+
+.wizard-section * {
+    box-sizing: border-box;
+}
+
+.wizard-section {
+    font-family: var(--font-family);
+    background-color: var(--secondary-pink);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.wizard-container {
+    background: var(--white);
+    max-width: 600px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 152, 184, 0.15);
+    padding: 30px;
+    overflow: hidden;
+}
+
+/* Header */
+.wizard-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.wizard-header .logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.wizard-header h2 {
+    color: var(--primary-pink-dark);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.wizard-header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Progress Bar */
+.progress-container {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.progress-track {
+    background: var(--light-gray);
+    height: 8px;
+    border-radius: 10px;
+    position: relative;
+    top: 18px;
+    z-index: 1;
+}
+
+.progress-fill {
+    background: var(--primary-pink);
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+}
+
+.progress-steps-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.progress-step {
+    background: var(--white);
+    border: 3px solid var(--light-gray);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    color: #999;
+}
+
+.progress-step.active, .progress-step.completed {
+    border-color: var(--primary-pink);
+    color: var(--primary-pink);
+}
+
+.progress-step.completed {
+    background: var(--primary-pink);
+    color: var(--white);
+}
+
+.bear-icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* Form Steps */
+.form-step {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-title {
+    color: var(--primary-pink-dark);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Service Options Grid */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.option-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.option-card input[type="radio"] {
+    display: none;
+}
+
+.option-content {
+    border: 2px solid var(--gray-border);
+    border-radius: 12px;
+    padding: 20px 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.option-icon {
+    font-size: 2rem;
+    color: #999;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.option-content h4 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.option-content p {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.option-card input:checked + .option-content {
+    border-color: var(--primary-pink);
+    background-color: var(--secondary-pink);
+}
+
+.option-card input:checked + .option-content .option-icon {
+    color: var(--primary-pink);
+    transform: scale(1.1);
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--gray-border);
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+}
+
+.counter-wrapper {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--gray-border);
+    border-radius: 8px;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.counter-wrapper input {
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    font-family: var(--font-family);
+}
+
+.btn-counter {
+    background: var(--light-gray);
+    border: none;
+    padding: 10px 18px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #555;
+    transition: background 0.3s ease;
+}
+
+.btn-counter:hover {
+    background: #E0E0E0;
+}
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* If only one button (next) push it right */
+.action-buttons .btn-next:only-child {
+    margin-left: auto;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-next {
+    background: var(--primary-pink);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(255, 152, 184, 0.4);
+}
+
+.btn-next:hover, .btn-submit:hover {
+    background: var(--primary-pink-dark);
+}
+
+.btn-prev {
+    background: var(--white);
+    color: #777;
+    border: 2px solid var(--gray-border);
+}
+
+.btn-prev:hover {
+    border-color: #555;
+    color: #333;
+}
+
+.btn-submit {
+    background: #25D366; /* WhatsApp color */
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+.btn-submit:hover {
+    background: #1EBE5C;
+}
+
+/* Summary Card */
+.summary-card {
+    background: var(--secondary-pink);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #444;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.summary-item:last-child {
+    margin-bottom: 0;
+}
+
+.pink-text {
+    color: var(--primary-pink-dark);
+}
+
+.summary-disclaimer {
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+    line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .wizard-container {
+        padding: 20px;
+    }
+}

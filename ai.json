@@ -1,0 +1,43 @@
+{
+  "nombre": "DOMHE Nanny",
+  "descripcion": "Somos una agencia de niñeras 100% comprometida con el cuidado y desarrollo de los niños, ofreciendo servicios personalizados adaptados a las rutinas y métodos de crianza de cada familia.",
+  "ubicacion": "Guadalajara, México",
+  "servicios": [
+    "Servicio Ocasional",
+    "Servicio Fijo",
+    "Paquetes Semanales",
+    "Servicio Nocturno",
+    "Servicio en Fiesta",
+    "Servicio en Viajes"
+  ],
+  "caracteristicas_destacadas": [
+    "Personal altamente calificado en salud y educación",
+    "Servicios personalizados 24/7",
+    "Atención al cliente de 8am a 8pm",
+    "Reclutamiento riguroso de niñeras"
+  ],
+  "slogan": "Cuida lo que más amas, confía en nuestras niñeras",
+  "publico_objetivo": "Familias en Guadalajara y alrededores",
+  "objetivos": [
+    "Atraer clientes",
+    "Generar confianza",
+    "Informar sobre la agencia",
+    "Transmitir formalidad"
+  ],
+  "contacto": {
+    "sitio_web": "https://domhenanny.com.mx",
+    "whatsapp": "+52 1 33 3497 848",
+    "instagram": "@domhe_nanny"
+  },
+  "secciones_sitio": [
+    "Inicio",
+    "Nosotros",
+    "Tipos de servicio y descripción",
+    "Galería",
+    "Proceso de reclutamiento de niñeras",
+    "Testimonios de familias",
+    "Testimonios de niñeras",
+    "Contacto",
+    "Log-in"
+  ]
+}

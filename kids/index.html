@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DOMHE Kids Zone | Juegos Offline</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF98B8">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/kids.css">
+</head>
+<body class="menu-body">
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-area">
+                <a href="../index.html"><img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png" alt="DOMHE Logo" class="logo"></a>
+                <h1>Kids Zone</h1>
+            </div>
+            <p class="subtitle">¡Juega sin conexión en donde estés!</p>
+        </header>
+
+        <main class="menu-area">
+            <div class="games-grid">
+                <a href="draw.html" class="game-card">
+                    <div class="game-icon" style="background:#FF98B8;"><i class="fas fa-palette"></i></div>
+                    <h3>Pizarrón Mágico</h3>
+                    <p>Dibuja y crea obras de arte.</p>
+                </a>
+                
+                <a href="memory.html" class="game-card">
+                    <div class="game-icon" style="background:#15AAE2;"><i class="fas fa-layer-group"></i></div>
+                    <h3>Memorama</h3>
+                    <p>Encuentra los pares ocultos.</p>
+                </a>
+                
+                <a href="puzzle.html" class="game-card">
+                    <div class="game-icon" style="background:#A1CD3A;"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3>Rompecabezas</h3>
+                    <p>Arma al osito Domhe.</p>
+                </a>
+            </div>
+        </main>
+
+        <!-- Name Prompt Modal -->
+        <div id="name-modal" class="victory-modal" style="display: flex;">
+            <div class="victory-content">
+                <div class="victory-icon"><i class="fas fa-smile"></i></div>
+                <h2 style="font-family: 'Fredoka One', cursive; color: #E81A63; margin-bottom: 20px;">¡Hola!</h2>
+                <p>¿Cómo te llamas?</p>
+                <input type="text" id="kid-name-input" placeholder="Escribe tu nombre aquí" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 10px; border: 2px solid #FF98B8; font-family: 'Quicksand', sans-serif; font-size: 1.1rem; text-align: center;">
+                <button id="save-name-btn" class="btn">¡A Jugar!</button>
+            </div>
+        </div>
+        
+        <!-- Offline Indicator -->
+        <div id="offline-badge" class="offline-badge" style="display:none;">
+            <i class="fas fa-wifi-slash"></i> Modo Offline Activo
+        </div>
+    </div>
+
+    <script>
+        // Handle Name Prompt
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('domhe_kid_name');
+            const nameModal = document.getElementById('name-modal');
+            const nameInput = document.getElementById('kid-name-input');
+            const saveBtn = document.getElementById('save-name-btn');
+
+            if (savedName) {
+                nameModal.style.display = 'none';
+                document.querySelector('.subtitle').innerHTML = `¡Hola <b>${savedName}</b>! Juega sin conexión en donde estés. <a href="#" id="change-name-link" style="color:#FF98B8; font-size: 0.8rem;">Cambiar nombre</a>`;
+                
+                document.getElementById('change-name-link').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    nameInput.value = savedName;
+                    nameModal.style.display = 'flex';
+                });
+            }
+
+            saveBtn.addEventListener('click', () => {
+                const val = nameInput.value.trim();
+                if (val) {
+                    localStorage.setItem('domhe_kid_name', val);
+                    nameModal.style.display = 'none';
+                    // force refresh to show name
+                    location.reload();
+                }
+            });
+        });
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('SW registered!', reg))
+                .catch(err => console.log('SW registration failed', err));
+            });
+        }
+        
+        // Listen for offline status
+        window.addEventListener('offline', () => {
+            document.getElementById('offline-badge').style.display = 'block';
+        });
+        window.addEventListener('online', () => {
+            document.getElementById('offline-badge').style.display = 'none';
+        });
+        if (!navigator.onLine) {
+            document.getElementById('offline-badge').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
