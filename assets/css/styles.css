@@ -398,10 +398,11 @@ h6 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 0;
   overflow: hidden;
   padding-top: 90px;
-  z-index: 1;
+  z-index: 0;
 }
 
 .hero-background {
@@ -919,7 +920,7 @@ h6 {
 /* ===== TESTIMONIALS SECTION ===== */
 .testimonials {
   padding: 100px 0;
-  background: var(--white);
+  background: #FFF5FA;
   position: relative;
   z-index: 2;
 }
@@ -1301,7 +1302,7 @@ h6 {
 
 /* ===== FOOTER ===== */
 .footer {
-  background: var(--text-dark);
+  background: linear-gradient(135deg, #FF98B8 0%, #FF7CA3 100%);
   color: var(--white);
   padding: 60px 0 20px;
   position: relative;
@@ -1882,9 +1883,10 @@ a:focus {
 
 /* ===== FOOTER MINIMAL ===== */
 .footer-minimal {
-  background-color: var(--secondary-purple);
+  background-color: #FFF5FA;
   /* very light pink */
   padding: 60px 20px 20px;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .footer-box {
@@ -1896,11 +1898,12 @@ a:focus {
   border-radius: 20px;
   padding: 60px 40px;
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .footer-box h2 {
   font-size: 2rem;
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Quicksand', sans-serif;
   margin-bottom: 15px;
 }
 

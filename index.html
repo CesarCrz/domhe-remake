@@ -79,7 +79,7 @@
                 <li class="nav-item"><a href="#reclutamiento" class="nav-link">Reclutamiento</a></li>
                 <li class="nav-item"><a href="#testimonios" class="nav-link">Testimonios</a></li>
                 <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
-                <li class="nav-item"><a href="./kids/index.html" class="nav-link" style="color: #FF98B8; font-weight: bold;">Kids Zone 🧸</a></li>
+                <li class="nav-item"><a href="./kids/" class="nav-link" style="color: #FF98B8; font-weight: bold;">Kids Zone 🧸</a></li>
                 <li class="nav-item"><a href="./login" class="nav-link login-btn">Login</a></li>
             </ul>
             
@@ -229,7 +229,17 @@
                             <button class="counter-btn plus" data-target="hoursCount"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
-                    
+
+                    <div class="input-group">
+                        <label for="serviceDate">Fecha del Servicio</label>
+                        <input type="date" id="serviceDate" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="serviceTime">Hora del Servicio</label>
+                        <input type="time" id="serviceTime" required>
+                    </div>
+
                     <div class="wizard-actions">
                         <button class="btn btn-secondary prev-btn"><i class="fas fa-arrow-left"></i> Atrás</button>
                         <button class="btn btn-primary next-btn">Siguiente <i class="fas fa-arrow-right"></i></button>
@@ -265,6 +275,8 @@
                             <li><strong>Servicio:</strong> <span id="summaryService"></span></li>
                             <li><strong>Niños a cuidar:</strong> <span id="summaryKids"></span></li>
                             <li><strong>Horas estimadas:</strong> <span id="summaryHours"></span></li>
+                            <li><strong>Fecha:</strong> <span id="summaryDate"></span></li>
+                            <li><strong>Hora:</strong> <span id="summaryTime"></span></li>
                             <li><strong>Zona:</strong> <span id="summaryLocation"></span></li>
                         </ul>
                     </div>

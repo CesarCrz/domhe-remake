@@ -86,7 +86,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
             }
-            
+
+            if (currentStep === 2) {
+                const serviceDate = document.getElementById('serviceDate').value;
+                const serviceTime = document.getElementById('serviceTime').value;
+
+                if (!serviceDate || !serviceTime) {
+                    alert('Por favor selecciona la fecha y hora del servicio antes de continuar.');
+                    return;
+                }
+            }
+
             if (currentStep === 3) {
                 const userName = document.getElementById('userName').value.trim();
                 const userLocation = document.getElementById('userLocation').value.trim();
@@ -122,17 +132,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const summaryService = document.getElementById('summaryService');
         const summaryKids = document.getElementById('summaryKids');
         const summaryHours = document.getElementById('summaryHours');
+        const summaryDate = document.getElementById('summaryDate');
+        const summaryTime = document.getElementById('summaryTime');
         const summaryLocation = document.getElementById('summaryLocation');
-        
+
         const userName = document.getElementById('userName').value.trim();
         const userLocation = document.getElementById('userLocation').value.trim();
         const kidsCount = document.getElementById('kidsCount').value;
         const hoursCount = document.getElementById('hoursCount').value;
-        
+        const serviceDate = document.getElementById('serviceDate').value;
+        const serviceTime = document.getElementById('serviceTime').value;
+
         if (summaryName) summaryName.textContent = userName;
         if (summaryService) summaryService.textContent = selectedService;
         if (summaryKids) summaryKids.textContent = kidsCount;
         if (summaryHours) summaryHours.textContent = hoursCount;
+        if (summaryDate) summaryDate.textContent = serviceDate;
+        if (summaryTime) summaryTime.textContent = serviceTime;
         if (summaryLocation) summaryLocation.textContent = userLocation;
     }
     
@@ -144,20 +160,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const userLocation = document.getElementById('userLocation').value.trim();
             const kidsCount = document.getElementById('kidsCount').value;
             const hoursCount = document.getElementById('hoursCount').value;
-            
+            const serviceDate = document.getElementById('serviceDate').value;
+            const serviceTime = document.getElementById('serviceTime').value;
+
             const message = `💖 *Hola DOMHE Nanny!* 💖
 Soy *${userName}*, me gustaría agendar un servicio.
 
 🧸 *Servicio:* ${selectedService}
 👶 *Niños a cuidar:* ${kidsCount}
 ⏰ *Horas estimadas:* ${hoursCount}
+📅 *Fecha:* ${serviceDate}
+🕐 *Hora:* ${serviceTime}
 🏠 *Zona:* ${userLocation}
 
 ¡Quedo atenta a su respuesta! 🥰`;
 
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/5213334978486?text=${encodedMessage}`;
-            
+
             window.open(whatsappUrl, '_blank');
         });
     }

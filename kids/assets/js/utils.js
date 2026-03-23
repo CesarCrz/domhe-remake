@@ -7,7 +7,7 @@ function getKidName() {
 
 function showVictoryModal(gameName, scoreText = '') {
     const kidName = getKidName();
-    
+
     // Generate the modal HTML dynamically if it doesn't exist
     let modal = document.getElementById('victoryModal');
     if (!modal) {
@@ -24,7 +24,7 @@ function showVictoryModal(gameName, scoreText = '') {
             </div>
         `;
         document.body.appendChild(modal);
-        
+
         document.getElementById('downloadBadgeBtn').addEventListener('click', () => {
             generateAndDownloadBadge(gameName, kidName);
         });
@@ -35,9 +35,10 @@ function showVictoryModal(gameName, scoreText = '') {
             generateAndDownloadBadge(gameName, kidName);
         };
     }
-    
+
     document.getElementById('victoryTitle').innerText = `¡Felicidades, ${kidName}!`;
     document.getElementById('victoryBody').innerText = `Completaste el ${gameName} en DOMHE Kids. ${scoreText}`;
+
     modal.style.display = 'flex';
 }
 

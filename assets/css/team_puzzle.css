@@ -4,7 +4,7 @@
     padding: 80px 0;
     background-color: #FFF0F5; /* brand subtle pink */
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .nanny-puzzle-section .section-header {
@@ -13,7 +13,7 @@
 }
 
 .nanny-puzzle-section .section-header h2 {
-    font-family: 'Fredoka One', cursive; /* playful */
+    font-family: 'Quicksand', sans-serif; /* playful */
     color: #E81A63;
     font-size: 2.5rem;
 }
@@ -25,7 +25,8 @@
     gap: -30px; /* Negative gap to overlap pieces */
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 80px 60px;
+    overflow: visible;
 }
 
 .puzzle-piece {
@@ -34,8 +35,8 @@
     aspect-ratio: 1 / 1;
     overflow: visible;
     cursor: pointer;
-    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M 15 15 L 40 15 C 40 -2, 60 -2, 60 15 L 85 15 L 85 40 C 102 40, 102 60, 85 60 L 85 85 L 60 85 C 60 72, 40 72, 40 85 L 15 85 L 15 60 C 28 60, 28 40, 15 40 Z" fill="black"/></svg>');
-    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M 15 15 L 40 15 C 40 -2, 60 -2, 60 15 L 85 15 L 85 40 C 102 40, 102 60, 85 60 L 85 85 L 60 85 C 60 72, 40 72, 40 85 L 15 85 L 15 60 C 28 60, 28 40, 15 40 Z" fill="black"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 110 110"><path d="M 15 15 L 40 15 C 40 -2, 60 -2, 60 15 L 85 15 L 85 40 C 102 40, 102 60, 85 60 L 85 85 L 60 85 C 60 72, 40 72, 40 85 L 15 85 L 15 60 C 28 60, 28 40, 15 40 Z" fill="black"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 110 110"><path d="M 15 15 L 40 15 C 40 -2, 60 -2, 60 15 L 85 15 L 85 40 C 102 40, 102 60, 85 60 L 85 85 L 60 85 C 60 72, 40 72, 40 85 L 15 85 L 15 60 C 28 60, 28 40, 15 40 Z" fill="black"/></svg>');
     -webkit-mask-size: 130%;
     mask-size: 130%;
     -webkit-mask-position: center;
@@ -44,7 +45,7 @@
     mask-repeat: no-repeat;
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin: -15px;
+    margin: -5px;
 }
 
 .puzzle-piece img {

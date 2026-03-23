@@ -689,9 +689,21 @@ function initScrollEffects() {
 
       // Hide hero when it reaches the next section
       if (scrollProgress > 0.8) {
-        hero.style.opacity = Math.max(0, 1 - (scrollProgress - 0.8) * 5)
+        const opacity = Math.max(0, 1 - (scrollProgress - 0.8) * 5)
+        hero.style.opacity = opacity
+
+        // Disable pointer events and visibility when hidden
+        if (opacity === 0) {
+          hero.style.pointerEvents = 'none'
+          hero.style.visibility = 'hidden'
+        } else {
+          hero.style.pointerEvents = 'auto'
+          hero.style.visibility = 'visible'
+        }
       } else {
         hero.style.opacity = 1
+        hero.style.pointerEvents = 'auto'
+        hero.style.visibility = 'visible'
       }
     }
 
