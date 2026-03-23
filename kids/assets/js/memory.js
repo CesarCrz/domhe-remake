@@ -1,5 +1,29 @@
 // memory.js
-const icons = ['🧸', '🍼', '🎨', '🧩', '🎈', '⭐', '🧸', '🍼', '🎨', '🧩', '🎈', '⭐'];
+
+// Different icon sets for variety
+const iconSets = [
+    // Animals
+    ['🐶', '🐱', '🐰', '🦊', '🐻', '🐼', '🐶', '🐱', '🐰', '🦊', '🐻', '🐼'],
+    // Food
+    ['🍕', '🍔', '🍦', '🍎', '🍪', '🧁', '🍕', '🍔', '🍦', '🍎', '🍪', '🧁'],
+    // Nature
+    ['🌸', '🌻', '🌈', '⭐', '🌙', '☀️', '🌸', '🌻', '🌈', '⭐', '🌙', '☀️'],
+    // Transport
+    ['🚗', '✈️', '🚀', '🚂', '⛵', '🚁', '🚗', '✈️', '🚀', '🚂', '⛵', '🚁'],
+    // Fun stuff
+    ['🎈', '🎁', '🎨', '🧸', '🎪', '🎭', '🎈', '🎁', '🎨', '🧸', '🎪', '🎭'],
+    // Sea creatures
+    ['🐠', '🐙', '🦀', '🐬', '🐳', '🦈', '🐠', '🐙', '🦀', '🐬', '🐳', '🦈'],
+    // Sports
+    ['⚽', '🏀', '🎾', '⚾', '🏈', '🎱', '⚽', '🏀', '🎾', '⚾', '🏈', '🎱']
+];
+
+// Get a random icon set
+function getRandomIconSet() {
+    return [...iconSets[Math.floor(Math.random() * iconSets.length)]];
+}
+
+let icons = getRandomIconSet();
 let cards = [];
 let hasFlippedCard = false;
 let lockBoard = false;
@@ -11,6 +35,9 @@ const grid = document.getElementById('memoryGrid');
 function initGame() {
     matches = 0;
     grid.innerHTML = '';
+    
+    // Get a new random set each game
+    icons = getRandomIconSet();
     
     // Shuffle
     icons.sort(() => 0.5 - Math.random());

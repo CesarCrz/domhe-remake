@@ -12,12 +12,12 @@
 </head>
 <body class="menu-body">
     <div class="app-container">
-        <header class="app-header">
-            <div class="logo-area">
-                <a href="../index.html"><img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png" alt="DOMHE Logo" class="logo"></a>
-                <h1>Kids Zone</h1>
+        <header class="app-header" style="flex-direction: column; text-align: center;">
+            <div class="logo-area" style="flex-direction: column; align-items: center;">
+                <a href="../index.html"><img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png" alt="DOMHE Logo" class="logo" style="width: 60px; margin-bottom: 10px;"></a>
+                <h1 style="font-size: 2.5rem;">Kids Zone</h1>
             </div>
-            <p class="subtitle">¡Juega sin conexión en donde estés!</p>
+            <p class="subtitle" style="margin-top: 10px;">¡Juega sin conexión en donde estés!</p>
         </header>
 
         <main class="menu-area">
@@ -69,7 +69,7 @@
 
             if (savedName) {
                 nameModal.style.display = 'none';
-                document.querySelector('.subtitle').innerHTML = `¡Hola <b>${savedName}</b>! Juega sin conexión en donde estés. <a href="#" id="change-name-link" style="color:#FF98B8; font-size: 0.8rem;">Cambiar nombre</a>`;
+                document.querySelector('.subtitle').innerHTML = `¡Hola <b>${savedName}</b>! Juega sin conexión en donde estés.<br><a href="#" id="change-name-link" style="color:#FF98B8; font-size: 0.8rem;">Cambiar nombre</a>`;
                 
                 document.getElementById('change-name-link').addEventListener('click', (e) => {
                     e.preventDefault();

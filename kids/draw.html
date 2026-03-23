@@ -10,11 +10,16 @@
 </head>
 <body>
     <div class="app-container">
-        <header class="app-header">
-            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+        <header class="app-header" style="flex-direction: column; padding-bottom: 5px;">
+            <a href="index.html" class="back-btn" style="top: 15px;"><i class="fas fa-arrow-left"></i></a>
             <div class="logo-area">
                 <img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png" alt="DOMHE Logo" class="logo">
                 <h1>Pizarrón</h1>
+            </div>
+            <div class="draw-prompt" style="margin-top: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                <span style="font-size: 0.9rem; color: #666;">Dibuja:</span>
+                <span id="draw-word" style="font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #E81A63; background: #FFE5F0; padding: 5px 15px; border-radius: 20px;"></span>
+                <button id="new-word-btn" style="background: #FF98B8; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 0.8rem;"><i class="fas fa-sync-alt"></i></button>
             </div>
         </header>
 
@@ -49,5 +54,44 @@
     
     <script src="./assets/js/utils.js"></script>
     <script src="./assets/js/draw.js"></script>
+    <script>
+        // Drawing prompts for kids
+        const drawingPrompts = [
+            // Animals
+            'Un Perro', 'Un Gato', 'Una Mariposa', 'Un Pez', 'Un Conejo', 'Una Tortuga', 
+            'Un Elefante', 'Un León', 'Un Pájaro', 'Una Abeja', 'Un Dinosaurio', 'Un Delfín',
+            // Food
+            'Una Pizza', 'Un Helado', 'Una Manzana', 'Un Pastel', 'Una Hamburguesa', 
+            'Unas Fresas', 'Un Plátano', 'Un Hot Dog', 'Unos Tacos', 'Un Sandwich',
+            // Places
+            'La Playa', 'Un Bosque', 'Una Montaña', 'El Mar', 'Una Casa', 'Un Castillo',
+            'El Sol', 'La Luna', 'Un Arcoíris', 'Un Jardín', 'Un Parque',
+            // Family
+            'Mi Familia', 'Mi Mascota', 'Mi Casa', 'Mis Amigos', 'Mi Mamá', 'Mi Papá',
+            // Objects
+            'Un Carro', 'Un Avión', 'Un Barco', 'Una Flor', 'Un Árbol', 'Una Estrella',
+            'Un Corazón', 'Un Robot', 'Una Pelota', 'Un Globo'
+        ];
+
+        function getRandomPrompt() {
+            return drawingPrompts[Math.floor(Math.random() * drawingPrompts.length)];
+        }
+
+        // Initialize drawing prompt
+        document.getElementById('draw-word').textContent = getRandomPrompt();
+
+        // New word button
+        document.getElementById('new-word-btn').addEventListener('click', () => {
+            const btn = document.getElementById('new-word-btn');
+            btn.style.transform = 'rotate(360deg)';
+            btn.style.transition = 'transform 0.5s';
+            
+            document.getElementById('draw-word').textContent = getRandomPrompt();
+            
+            setTimeout(() => {
+                btn.style.transform = 'rotate(0deg)';
+            }, 500);
+        });
+    </script>
 </body>
 </html>

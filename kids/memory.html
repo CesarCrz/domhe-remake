@@ -23,9 +23,18 @@
                 <!-- Cards injected via JS -->
             </div>
         </main>
+        
+        <div style="text-align:center; padding: 20px;">
+            <button id="resetMemory" class="btn btn-secondary">Nuevo Juego</button>
+        </div>
     </div>
     
     <script src="./assets/js/utils.js"></script>
     <script src="./assets/js/memory.js"></script>
+    <script>
+        document.getElementById('resetMemory').addEventListener('click', () => {
+            initGame();
+        });
+    </script>
 </body>
 </html>

@@ -1,146 +1,167 @@
-// domhe-interactive-form/script.js
-
-let currentStep = 1;
-const totalSteps = 4;
-
-function updateProgress() {
-    // Calculate width to fill
-    const fillWidth = ((currentStep - 1) / (totalSteps - 1)) * 100;
-    document.getElementById('progress-fill').style.width = `${fillWidth}%`;
-
-    // Process step dots/bears
-    document.querySelectorAll('.progress-step').forEach((stepEl) => {
-        const stepNum = parseInt(stepEl.getAttribute('data-step'));
-        stepEl.classList.remove('active', 'completed');
+// domhe-interactive-wizard - Updated for index.html wizard
+document.addEventListener('DOMContentLoaded', function() {
+    // Wizard elements
+    const wizardSteps = document.querySelectorAll('.wizard-step');
+    const progressFill = document.getElementById('progressFill');
+    const progressSteps = document.querySelectorAll('.progress-container .step');
+    const serviceOptions = document.querySelectorAll('.service-option');
+    
+    // State
+    let currentStep = 1;
+    const totalSteps = 4;
+    let selectedService = '';
+    
+    // Update progress bar
+    function updateProgress() {
+        const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+        if (progressFill) {
+            progressFill.style.width = `${progress}%`;
+        }
         
-        if (stepNum < currentStep) {
-            stepEl.classList.add('completed');
-        } else if (stepNum === currentStep) {
-            stepEl.classList.add('active');
+        progressSteps.forEach((step, index) => {
+            const stepNum = index + 1;
+            step.classList.remove('active', 'completed');
+            
+            if (stepNum < currentStep) {
+                step.classList.add('completed');
+            } else if (stepNum === currentStep) {
+                step.classList.add('active');
+            }
+        });
+    }
+    
+    // Show specific step
+    function showStep(step) {
+        wizardSteps.forEach(s => s.classList.remove('active'));
+        const targetStep = document.getElementById(`step${step}`);
+        if (targetStep) {
+            targetStep.classList.add('active');
         }
-    });
-}
-
-function showStep(step) {
-    document.querySelectorAll('.form-step').forEach((el) => {
-        el.classList.remove('active');
+        currentStep = step;
+        updateProgress();
+    }
+    
+    // Service option selection
+    serviceOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            serviceOptions.forEach(o => o.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedService = this.getAttribute('data-value');
+            
+            // Hide error message
+            const errorMsg = document.getElementById('err-step1');
+            if (errorMsg) errorMsg.style.display = 'none';
+        });
     });
     
-    const stepEl = document.getElementById(`step-${step}`);
-    if(stepEl){
-        stepEl.classList.add('active');
+    // Counter controls
+    document.querySelectorAll('.counter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            if (!input) return;
+            
+            let value = parseInt(input.value) || 1;
+            const min = parseInt(input.getAttribute('min')) || 1;
+            const max = parseInt(input.getAttribute('max')) || 99;
+            
+            if (this.classList.contains('plus')) {
+                value = Math.min(value + 1, max);
+            } else if (this.classList.contains('minus')) {
+                value = Math.max(value - 1, min);
+            }
+            
+            input.value = value;
+        });
+    });
+    
+    // Next button handlers
+    document.querySelectorAll('.next-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Validate current step
+            if (currentStep === 1) {
+                if (!selectedService) {
+                    const errorMsg = document.getElementById('err-step1');
+                    if (errorMsg) errorMsg.style.display = 'block';
+                    return;
+                }
+            }
+            
+            if (currentStep === 3) {
+                const userName = document.getElementById('userName').value.trim();
+                const userLocation = document.getElementById('userLocation').value.trim();
+                
+                if (!userName || !userLocation) {
+                    const errorMsg = document.getElementById('err-step3');
+                    if (errorMsg) errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                // Update summary
+                updateSummary();
+            }
+            
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        });
+    });
+    
+    // Previous button handlers
+    document.querySelectorAll('.prev-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        });
+    });
+    
+    // Update summary for step 4
+    function updateSummary() {
+        const summaryName = document.getElementById('summaryName');
+        const summaryService = document.getElementById('summaryService');
+        const summaryKids = document.getElementById('summaryKids');
+        const summaryHours = document.getElementById('summaryHours');
+        const summaryLocation = document.getElementById('summaryLocation');
+        
+        const userName = document.getElementById('userName').value.trim();
+        const userLocation = document.getElementById('userLocation').value.trim();
+        const kidsCount = document.getElementById('kidsCount').value;
+        const hoursCount = document.getElementById('hoursCount').value;
+        
+        if (summaryName) summaryName.textContent = userName;
+        if (summaryService) summaryService.textContent = selectedService;
+        if (summaryKids) summaryKids.textContent = kidsCount;
+        if (summaryHours) summaryHours.textContent = hoursCount;
+        if (summaryLocation) summaryLocation.textContent = userLocation;
     }
-    currentStep = step;
+    
+    // WhatsApp send button
+    const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
+    if (sendWhatsappBtn) {
+        sendWhatsappBtn.addEventListener('click', function() {
+            const userName = document.getElementById('userName').value.trim();
+            const userLocation = document.getElementById('userLocation').value.trim();
+            const kidsCount = document.getElementById('kidsCount').value;
+            const hoursCount = document.getElementById('hoursCount').value;
+            
+            const message = `💖 *Hola DOMHE Nanny!* 💖
+Soy *${userName}*, me gustaría agendar un servicio.
+
+🧸 *Servicio:* ${selectedService}
+👶 *Niños a cuidar:* ${kidsCount}
+⏰ *Horas estimadas:* ${hoursCount}
+🏠 *Zona:* ${userLocation}
+
+¡Quedo atenta a su respuesta! 🥰`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/5213334978486?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+    
+    // Initialize
     updateProgress();
-}
-
-function validateStep(step) {
-    const stepEl = document.getElementById(`step-${step}`);
-    const inputs = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
-    let isValid = true;
-    
-    // Quick validation just to ensure fields aren't completely empty
-    inputs.forEach(input => {
-        if (!input.value) {
-            isValid = false;
-            input.style.borderColor = 'red';
-        } else {
-            input.style.borderColor = '';
-        }
-    });
-
-    if(step === 1) {
-        // specifically check radios
-        const checked = stepEl.querySelector('input[type="radio"]:checked');
-        if(!checked) {
-            isValid = false;
-        }
-    }
-
-    return isValid;
-}
-
-function nextStep(step) {
-    if (validateStep(currentStep)) {
-        if(step === 4) {
-            populateSummary();
-        }
-        showStep(step);
-    } else {
-        alert("Por favor, llena todos los campos necesarios. 😊");
-    }
-}
-
-function prevStep(step) {
-    showStep(step);
-}
-
-function changeCount(fieldId, delta) {
-    const el = document.getElementById(fieldId);
-    let val = parseInt(el.value);
-    const min = parseInt(el.getAttribute('min'));
-    val += delta;
-    if (val < min) val = min;
-    el.value = val;
-}
-
-function populateSummary() {
-    const serviceRadio = document.querySelector('input[name="service"]:checked');
-    const service = serviceRadio ? serviceRadio.value : '';
-    
-    document.getElementById('summary-service').innerText = service;
-    
-    const date = document.querySelector('input[name="date"]').value;
-    const time = document.querySelector('input[name="time"]').value;
-    document.getElementById('summary-datetime').innerText = `${date} a las ${time}`;
-    
-    const hours = document.getElementById('hours').value;
-    document.getElementById('summary-hours').innerText = hours;
-    
-    const kids = document.getElementById('kids').value;
-    document.getElementById('summary-kids').innerText = kids;
-    
-    const ages = document.querySelector('input[name="ages"]').value;
-    document.getElementById('summary-ages').innerText = ages;
-    
-    const loc = document.querySelector('input[name="location"]').value;
-    document.getElementById('summary-location').innerText = loc;
-}
-
-function submitForm() {
-    const serviceRadio = document.querySelector('input[name="service"]:checked');
-    const service = serviceRadio ? serviceRadio.value : '';
-    const date = document.querySelector('input[name="date"]').value;
-    const time = document.querySelector('input[name="time"]').value;
-    const hours = document.getElementById('hours').value;
-    const kids = document.getElementById('kids').value;
-    const ages = document.querySelector('input[name="ages"]').value;
-    const loc = document.querySelector('input[name="location"]').value;
-    const name = document.querySelector('input[name="name"]').value;
-    const phone = document.querySelector('input[name="phone"]').value;
-    const extra = document.querySelector('textarea[name="extra"]').value;
-    
-    const phoneNumber = "5213334978486"; // DOMHE number from original site
-
-    const template = `💖 *Hola DOMHE Nanny!* 💖
-Soy *${name}*, me encantaría pedir información para un servicio. 
-
-🧸 *Servicio:* ${service}
-📅 *Fecha:* ${date}
-⏰ *Horario:* ${time} (${hours} horas)
-👶 *Niños:* ${kids} (Edades: ${ages})
-🏠 *Ubicación:* ${loc}
-📱 *Mi Teléfono:* ${phone}
-
-${extra ? `📝 *Detalles Extras:* ${extra}` : ''}
-
-¡Quedo a la espera de su respuesta! 🥰`;
-
-    const encodedText = encodeURIComponent(template);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
-    
-    window.open(whatsappUrl, '_blank');
-}
-
-// Initialize
-updateProgress();
+});
