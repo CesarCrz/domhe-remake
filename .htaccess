@@ -7,7 +7,12 @@ RewriteRule ^$ index.html [L]
 # Redirigir /login a login.html
 RewriteRule ^login/?$ login.html [NC,L]
 
-# Redirigir URLs sin extensión al .html correspondiente
+# Redirigir URLs dentro de /kids sin extensión al .html correspondiente
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^kids/([a-zA-Z0-9_-]+)/?$ kids/$1.html [NC,L]
+
+# Redirigir URLs sin extensión al .html correspondiente (raíz)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.html [NC,L]

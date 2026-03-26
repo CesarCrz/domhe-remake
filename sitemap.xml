@@ -10,4 +10,24 @@
     <priority>0.50</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://domhenanny.com.mx/kids</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://domhenanny.com.mx/kids/memory</loc>
+    <priority>0.70</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://domhenanny.com.mx/kids/puzzle</loc>
+    <priority>0.70</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://domhenanny.com.mx/kids/draw</loc>
+    <priority>0.70</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

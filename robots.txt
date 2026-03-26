@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Allow: /kids/
+Allow: /kids/memory
+Allow: /kids/puzzle
+Allow: /kids/draw
 
 Sitemap: https://domhenanny.com.mx/sitemap.xml

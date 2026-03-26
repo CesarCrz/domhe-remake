@@ -4,7 +4,7 @@ const nanniesData = [
     {
         id: 1,
         name: "Val",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774488721/WhatsApp_Image_2026-03-25_at_19.26.45_pafw4z.jpg",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489775/WhatsApp_Image_2026-03-25_at_19.47.30_ovggwo.jpg",
         traits: "Activa, Responsable y Paciente",
         ages: "Recién nacidos a 10 años",
         activities: "Primeros Auxilios, Cambios de pañales, Baño a RN, Actividades recreativas, Apoyo en tareas escolares",
