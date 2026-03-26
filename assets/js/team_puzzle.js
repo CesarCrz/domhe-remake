@@ -4,56 +4,86 @@ const nanniesData = [
     {
         id: 1,
         name: "Val",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1753299129/Copia_de_IMG_5735_netcy4.jpg",
-        traits: "99% Cariñosa, 99% Preventiva, 100% Divertida",
-        ages: "Lactante, Toddler, Preescolar y Escolar",
-        activities: "Rutinas, Alimentación, Baño, Apoyo en tareas y Juegos interactivos",
-        education: "Químico Farmacobiólogo en C.U.C.E.I."
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774488721/WhatsApp_Image_2026-03-25_at_19.26.45_pafw4z.jpg",
+        traits: "Activa, Responsable y Paciente",
+        ages: "Recién nacidos a 10 años",
+        activities: "Primeros Auxilios, Cambios de pañales, Baño a RN, Actividades recreativas, Apoyo en tareas escolares",
+        education: "Químico Farmacobiólogo en C.U.C.E.I.",
+        references: [
+            { family: "Familia Martínez", stars: 5, text: "Val fue increíble con nuestro bebé de 8 meses. Muy profesional, cariñosa y siempre pendiente de cada detalle." },
+            { family: "Familia Hernández", stars: 5, text: "Nuestra hija la adora. Es muy divertida y al mismo tiempo muy responsable. La recomendamos sin dudar." },
+            { family: "Familia Ríos", stars: 5, text: "Desde el primer día nos dio mucha confianza. Val conoce perfectamente las rutinas y los niños la quieren mucho." }
+        ]
     },
     {
         id: 2,
-        name: "Andy",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1753299128/Copia_de_IMG_5751_ylq2zi.jpg",
-        traits: "100% Dinámica, 99% Paciente, 99% Alegre",
-        ages: "Lactante, Toddler, Preescolar",
-        activities: "Desarrollo motriz, Cuentacuentos, Juegos al aire libre",
-        education: "Lic. en Educación Preescolar"
+        name: "Lulú Hernández",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774488719/WhatsApp_Image_2026-03-25_at_19.25.19_lhch42.jpg",
+        traits: "Responsable, Activa con los peques, Gran experiencia profesional",
+        ages: "Recién nacidos a 12 años",
+        activities: "Cambio de pañales, Baño a RN, Actividades recreativas y lúdicas, Apoyo en tareas escolares",
+        education: "Lic. en Educación Preescolar",
+        references: [
+            { family: "Familia Ramírez", stars: 5, text: "Lulú es súper dinámica y creativa. Nuestro hijo siempre llegaba feliz y emocionado contando lo que habían hecho." },
+            { family: "Familia Torres", stars: 5, text: "Muy puntual, responsable y cariñosa. Lulú se ganó la confianza de toda la familia desde la primera semana." },
+            { family: "Familia Salazar", stars: 5, text: "Tiene una energía increíble para jugar con los niños. Su formación en educación preescolar se nota en cada actividad." }
+        ]
     },
     {
         id: 3,
-        name: "Gaby",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1753299130/Copia_de_IMG_5668_aq6shb.jpg",
-        traits: "99% Observadora, 100% Protectora, 99% Creativa",
-        ages: "Toddler, Preescolar y Escolar",
-        activities: "Manualidades, Refuerzo escolar, Rutinas de sueño",
-        education: "Lic. en Psicología Infantil"
+        name: "Mady",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489369/WhatsApp_Image_2026-03-25_at_19.36.27_hesdhr.jpg",
+        traits: "Responsabilidad, Creatividad y Paciencia",
+        ages: "Recién nacidos a 10 años",
+        activities: "Primeros auxilios, Cambio de pañales, Baño a RN",
+        education: "Lic. Médico Cirujano y Partero",
+        references: [
+            { family: "Familia Soto", stars: 5, text: "Mady es muy observadora y supo identificar las necesidades de nuestra hija desde el primer día. ¡Excelente!" },
+            { family: "Familia Morales", stars: 5, text: "Su formación en psicología la hace única. Ayudó mucho a nuestro hijo con sus rutinas de sueño y emociones." },
+            { family: "Familia Peña", stars: 5, text: "Nos sentimos muy seguros dejando a nuestros hijos con Mady. Muy creativa y siempre pendiente de su bienestar." }
+        ]
     },
     {
         id: 4,
-        name: "Fer",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1753299129/IMG_5838_g79nzo.png",
-        traits: "100% Proactiva, 99% Energética, 99% Cuidada",
-        ages: "Todas las edades",
-        activities: "Organización, Primeros auxilios, Nutrición",
-        education: "Enfermería Pediátrica"
+        name: "Sam",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489369/WhatsApp_Image_2026-03-25_at_19.37.56_dlnj5p.jpg",
+        traits: "Responsable, Paciente, Creativa y Versátil",
+        ages: "Recién nacidos a 10 años",
+        activities: "Cambio de pañales, baño a RN, Actividades recreativas, Apoyo en tareas escolares",
+        education: "Lic. Nutrición",
+        references: [
+            { family: "Familia Jiménez", stars: 5, text: "Los conocimientos de enfermería de Sam nos dan una tranquilidad enorme. Muy recomendable para bebés y niños pequeños." },
+            { family: "Familia Castro", stars: 5, text: "Sam es súper proactiva y organizada. Mejoró las rutinas de nuestros hijos en tiempo récord. ¡La adoramos!" },
+            { family: "Familia Vargas", stars: 5, text: "Sabe manejar cualquier situación con mucha calma. Su conocimiento en primeros auxilios nos da mucha paz." }
+        ]
     },
     {
         id: 5,
-        name: "Caro",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1753299657/Copia_de_IMG_5700_ee5ocj.jpg",
-        traits: "99% Empática, 100% Responsable, 99% Cálida",
-        ages: "Escolar y Preescolar",
-        activities: "Idiomas (Inglés), Apoyo emocional, Juegos didácticos",
-        education: "Lic. en Lenguas Modernas"
+        name: "Karen",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489416/WhatsApp_Image_2026-03-25_at_19.43.18_gk4fus.jpg",
+        traits: "Creatividad, Responsabilidad y Paciencia",
+        ages: "Recién nacidos a 10 años",
+        activities: "Primeros Auxilios, Cambios a RN, Baño a RN, Apoyo en Tareas",
+        education: "Lic. Psicología",
+        references: [
+            { family: "Familia Vega", stars: 5, text: "Karen practica inglés con nuestra hija de manera natural y divertida. Una joya de niñera, muy empática y cálida." },
+            { family: "Familia Núñez", stars: 5, text: "Se ganó la confianza de nuestros hijos desde el primer día. Muy responsable y siempre comunicando cómo estuvo la jornada." },
+            { family: "Familia Ibarra", stars: 5, text: "El apoyo emocional que le brinda a los niños es excepcional. Notamos un cambio muy positivo en nuestro hijo." }
+        ]
     },
     {
         id: 6,
-        name: "Sofi",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1753299127/IMG_7886_pcsyht.jpg",
-        traits: "100% Segura, 99% Confiable, 100% Ternura",
-        ages: "Lactante",
-        activities: "Estimulación temprana, Masajes, Alimentación complementaria",
-        education: "Estimulación Temprana Certificada"
+        name: "Lupita",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489370/WhatsApp_Image_2026-03-25_at_19.41.20_ecri7e.jpg",
+        traits: "Responsable, Divertida, Dinámcia",
+        ages: "Recién Nacidos a 10 años",
+        activities: "Primeros Auxilios, Cambio de pañales, Baño a RN, Actividades Lúdicas y Recreativas",
+        education: "Lic. Médico cirujano y Partero",
+        references: [
+            { family: "Familia Mendoza", stars: 5, text: "Lupita es especialista en lactantes. Nos enseñó técnicas de estimulación increíbles y nuestro bebé la adora." },
+            { family: "Familia Reyes", stars: 5, text: "Con Lupita nuestro bebé estuvo en las mejores manos. Muy confiable, ternurosa y siempre muy pendiente." },
+            { family: "Familia Aguilar", stars: 5, text: "La certificación en estimulación temprana se nota en todo lo que hace. Sin duda la mejor decisión que tomamos." }
+        ]
     }
 ];
 
@@ -61,12 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('puzzleGrid');
     const modal = document.getElementById('nannyModal');
     const closeBtn = document.getElementById('closeModalBtn');
+    const flipper = document.getElementById('nannyCardFlipper');
+    const flipToRefsBtn = document.getElementById('flipToRefs');
+    const flipToProfileBtn = document.getElementById('flipToProfile');
 
     // Populate the puzzle
     nanniesData.forEach((nanny, index) => {
         const piece = document.createElement('div');
         piece.className = 'puzzle-piece';
-        // Add random jigsaw slight styles (1, 2, or 3) just for a slightly quirky look if enabled in css
         piece.classList.add(`jig-${(index % 3) + 1}`);
 
         piece.innerHTML = `
@@ -75,11 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         piece.addEventListener('click', () => {
-            // Color it permanently
             piece.classList.add('colored');
             piece.classList.add('colored-permanent');
-            
-            // Wait a tiny bit then open modal
             setTimeout(() => {
                 openNannyModal(nanny);
             }, 400);
@@ -98,15 +127,56 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('active');
         }
     });
+
+    // Flip to references (button OR clicking anywhere on front face)
+    flipToRefsBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        flipper.classList.add('flipped');
+    });
+
+    document.querySelector('.card-front')?.addEventListener('click', () => {
+        flipper.classList.add('flipped');
+    });
+
+    // Flip back to profile (button OR clicking anywhere on back face)
+    flipToProfileBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        flipper.classList.remove('flipped');
+    });
+
+    document.querySelector('.card-back')?.addEventListener('click', () => {
+        flipper.classList.remove('flipped');
+    });
 });
 
 function openNannyModal(nanny) {
+    // Reset flip state
+    document.getElementById('nannyCardFlipper').classList.remove('flipped');
+
+    // Populate front face
     document.getElementById('modalPhoto').src = nanny.photo;
     document.getElementById('modalName').textContent = nanny.name;
     document.getElementById('modalTraits').textContent = nanny.traits;
     document.getElementById('modalAges').textContent = nanny.ages;
     document.getElementById('modalActivities').textContent = nanny.activities;
     document.getElementById('modalEdu').textContent = nanny.education;
-    
+
+    // Populate back face
+    document.getElementById('modalPhotoBack').src = nanny.photo;
+    document.getElementById('modalNameBack').textContent = nanny.name;
+
+    const refsList = document.getElementById('modalRefs');
+    refsList.innerHTML = '';
+    nanny.references.forEach(ref => {
+        const stars = '★'.repeat(ref.stars) + '☆'.repeat(5 - ref.stars);
+        refsList.innerHTML += `
+            <div class="ref-item">
+                <div class="ref-family">${ref.family}</div>
+                <div class="ref-stars">${stars}</div>
+                <p class="ref-text">"${ref.text}"</p>
+            </div>
+        `;
+    });
+
     document.getElementById('nannyModal').classList.add('active');
 }

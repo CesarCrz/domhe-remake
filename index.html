@@ -24,7 +24,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -153,7 +153,7 @@
             
             <div class="wizard-header">
                 <h2>¿Qué necesitas hoy?</h2>
-                <p>Completa este breve formulario para darte la mejor opción</p>
+                <p>Solicita tu <b>COTIZACIÓN</b> aquí</p>
                 
                 <!-- Bear Progress Bar -->
                 <div class="progress-container">
@@ -211,7 +211,7 @@
                 <!-- Step 2: Details -->
                 <div class="wizard-step" id="step2">
                     <h3>2. Detalles del Cuidado</h3>
-                    
+
                     <div class="counter-group">
                         <label>¿Cuántos niños?</label>
                         <div class="counter-control">
@@ -219,6 +219,31 @@
                             <input type="number" id="kidsCount" value="1" min="1" max="10" readonly>
                             <button class="counter-btn plus" data-target="kidsCount"><i class="fas fa-plus"></i></button>
                         </div>
+                    </div>
+
+                    <!-- Días de la semana — solo visible para servicio Fijo -->
+                    <div id="fixedDaysGroup" class="days-group" style="display:none;">
+                        <label>¿Qué días de la semana?</label>
+                        <div class="days-grid">
+                            <button type="button" class="day-btn" data-day="Lunes">Lun</button>
+                            <button type="button" class="day-btn" data-day="Martes">Mar</button>
+                            <button type="button" class="day-btn" data-day="Miércoles">Mié</button>
+                            <button type="button" class="day-btn" data-day="Jueves">Jue</button>
+                            <button type="button" class="day-btn" data-day="Viernes">Vie</button>
+                            <button type="button" class="day-btn" data-day="Sábado">Sáb</button>
+                            <button type="button" class="day-btn" data-day="Domingo">Dom</button>
+                        </div>
+                    </div>
+
+                    <!-- Nota informativa — solo visible para servicio Eventos -->
+                    <div id="eventosNote" class="eventos-note" style="display:none;">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Este servicio es contratado por los <strong>anfitriones</strong> para los pequeños invitados a su evento. ¡Nosotras nos encargamos de cuidar y entretener a los niños para que tú disfrutes tu celebración! 🎉</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="kidsAges" id="kidsAgesLabel">Edad de los peques</label>
+                        <input type="text" id="kidsAges" class="input-field" placeholder="Ej. 2 años, 5 años" required>
                     </div>
 
                     <div class="counter-group">
@@ -235,9 +260,15 @@
                         <input type="date" id="serviceDate" required>
                     </div>
 
-                    <div class="input-group">
-                        <label for="serviceTime">Hora del Servicio</label>
-                        <input type="time" id="serviceTime" required>
+                    <div class="time-row">
+                        <div class="input-group">
+                            <label for="serviceTimeStart">Hora de inicio</label>
+                            <input type="time" id="serviceTimeStart" class="input-field" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="serviceTimeEnd">Hora de fin</label>
+                            <input type="time" id="serviceTimeEnd" class="input-field" required>
+                        </div>
                     </div>
 
                     <div class="wizard-actions">
@@ -273,10 +304,12 @@
                         <p>Revisa tu información antes de enviarla a nuestro WhatsApp:</p>
                         <ul class="summary-list">
                             <li><strong>Servicio:</strong> <span id="summaryService"></span></li>
+                            <li id="summaryDaysRow" style="display:none;"><strong>Días:</strong> <span id="summaryDays"></span></li>
                             <li><strong>Niños a cuidar:</strong> <span id="summaryKids"></span></li>
+                            <li><strong>Edades:</strong> <span id="summaryAges"></span></li>
                             <li><strong>Horas estimadas:</strong> <span id="summaryHours"></span></li>
                             <li><strong>Fecha:</strong> <span id="summaryDate"></span></li>
-                            <li><strong>Hora:</strong> <span id="summaryTime"></span></li>
+                            <li><strong>Horario:</strong> <span id="summaryTime"></span></li>
                             <li><strong>Zona:</strong> <span id="summaryLocation"></span></li>
                         </ul>
                     </div>
@@ -293,7 +326,7 @@
     <section id="equipo" class="nanny-puzzle-section">
         <div class="container" data-aos="fade-up">
             <div class="section-header">
-                <h2>Conoce a nuestras Niñeras</h2>
+                <h2>Conoce a algunos de nuestros elementos <b>destacados</b></h2>
                 <p>Descubre el talento que compone nuestra familia. ¡Toca las piezas para conocerlas!</p>
             </div>
             
@@ -304,41 +337,66 @@
 
         <!-- Nanny Detail Modal -->
         <div id="nannyModal" class="nanny-modal">
-            <div class="nanny-card-content">
+            <div class="nanny-card-flip-container">
                 <button id="closeModalBtn" class="close-modal"><i class="fas fa-times"></i></button>
-                <div class="card-left">
-                    <img id="modalPhoto" src="" alt="Nanny" class="card-photo">
-                    <h3 id="modalName" class="card-name">Nombre</h3>
-                </div>
-                <div class="card-right">
-                    <div class="attribute-row">
-                        <div class="attr-icon"><i class="fas fa-star"></i></div>
-                        <div class="attr-text">
-                            <h4>Atributos</h4>
-                            <p id="modalTraits">...</p>
+                <div class="nanny-card-flipper" id="nannyCardFlipper">
+
+                    <!-- FRENTE: Perfil de la niñera -->
+                    <div class="card-face card-front">
+                        <div class="card-left">
+                            <img id="modalPhoto" src="" alt="Nanny" class="card-photo">
+                            <h3 id="modalName" class="card-name">Nombre</h3>
+                        </div>
+                        <div class="card-right">
+                            <div class="attribute-row">
+                                <div class="attr-icon"><i class="fas fa-star"></i></div>
+                                <div class="attr-text">
+                                    <h4>Atributos</h4>
+                                    <p id="modalTraits">...</p>
+                                </div>
+                            </div>
+                            <div class="attribute-row">
+                                <div class="attr-icon"><i class="fas fa-child"></i></div>
+                                <div class="attr-text">
+                                    <h4>Edades de Experiencia</h4>
+                                    <p id="modalAges">...</p>
+                                </div>
+                            </div>
+                            <div class="attribute-row">
+                                <div class="attr-icon"><i class="fas fa-puzzle-piece"></i></div>
+                                <div class="attr-text">
+                                    <h4>Tipo de Cuidado</h4>
+                                    <p id="modalActivities">...</p>
+                                </div>
+                            </div>
+                            <div class="attribute-row">
+                                <div class="attr-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="attr-text">
+                                    <h4>Formación</h4>
+                                    <p id="modalEdu">...</p>
+                                </div>
+                            </div>
+                            <button class="flip-btn" id="flipToRefs">
+                                Ver referencias <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="attribute-row">
-                        <div class="attr-icon"><i class="fas fa-child"></i></div>
-                        <div class="attr-text">
-                            <h4>Edades de Experiencia</h4>
-                            <p id="modalAges">...</p>
+
+                    <!-- REVERSO: Referencias de familias -->
+                    <div class="card-face card-back">
+                        <div class="card-left">
+                            <img id="modalPhotoBack" src="" alt="Nanny" class="card-photo">
+                            <h3 id="modalNameBack" class="card-name">Nombre</h3>
+                        </div>
+                        <div class="card-right card-right-refs">
+                            <h3 class="refs-title"><i class="fas fa-heart"></i> Referencias de Familias</h3>
+                            <div id="modalRefs" class="refs-list"></div>
+                            <button class="flip-btn flip-back-btn" id="flipToProfile">
+                                <i class="fas fa-arrow-left"></i> Ver perfil
+                            </button>
                         </div>
                     </div>
-                    <div class="attribute-row">
-                        <div class="attr-icon"><i class="fas fa-puzzle-piece"></i></div>
-                        <div class="attr-text">
-                            <h4>Tipo de Cuidado</h4>
-                            <p id="modalActivities">...</p>
-                        </div>
-                    </div>
-                    <div class="attribute-row">
-                        <div class="attr-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="attr-text">
-                            <h4>Formación</h4>
-                            <p id="modalEdu">...</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -398,76 +456,67 @@
     <section id="servicios" class="services">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <p class="section-subtitle">Servicios 100% personalizados a las necesidades de cada familia</p>
+                <p class="srv-heading-top">6 tipos de servicios en</p>
+                <img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753328925/WhatsApp_Image_2025-07-23_at_19.59.18_bw4agw.png"
+                     alt="DOMHE Nanny" class="srv-heading-logo">
             </div>
-            
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon" style="background-color: #FC2680;">
-                        <i class="fas fa-clock"></i>
+
+            <div class="srv-circles-grid">
+
+                <!-- Ocasionales — azul -->
+                <div class="srv-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="srv-circle" style="--srv-color: #15AAE2;">
+                        <i class="fas fa-phone-volume"></i>
                     </div>
-                    <h3>Servicio Ocasional</h3>
-                    <p>Ideal para cuidar de tus peques en cualquier momento, ya sea para eventos, citas o emergencias.</p>
-                    <div class="service-details">
-                        <span class="detail-badge">Mínimo 3 horas</span>
-                    </div>
+                    <span class="srv-name">ocasionales</span>
+                    <span class="srv-badge">Mínimo 3 horas</span>
                 </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon" style="background-color: #793AB8;">
-                        <i class="fas fa-calendar-week"></i>
+
+                <!-- Fiestas — rosa -->
+                <div class="srv-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="srv-circle" style="--srv-color: #FC2680;">
+                        <span class="srv-emoji">🪅</span>
                     </div>
-                    <h3>Servicio Fijo</h3>
-                    <p>Ideal para familias que necesitan apoyo más de una vez a la semana. Puedes mantener la misma nanny o cambiar.</p>
-                    <div class="service-details">
-                        <span class="detail-badge">Mínimo 3 días semanales, con 3 horas al día</span>
-                    </div>
+                    <span class="srv-name">fiestas</span>
+                    <span class="srv-badge">Para anfitriones</span>
                 </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon" style="background-color: #15AAE2;">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Paquetes Semanales</h3>
-                    <p>Personalizados de acuerdo a las necesidades de cada familia con horarios flexibles.</p>
-                    <div class="service-details">
-                        <span class="detail-badge">Desde 20 horas/semana</span>
-                    </div>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon" style="background-color: #A1CD3A;">
+
+                <!-- Nocturnos — naranja -->
+                <div class="srv-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="srv-circle" style="--srv-color: #FE8604;">
                         <i class="fas fa-moon"></i>
                     </div>
-                    <h3>Servicio Nocturno</h3>
-                    <p>Nada mejor que una pijamada con los peques mientras los papás toman un tiempo para ellos.</p>
-                    <div class="service-details">
-                        <span class="detail-badge">Mínimo 12 horas</span>
-                    </div>
+                    <span class="srv-name">nocturnos</span>
+                    <span class="srv-badge">Mínimo 12 horas</span>
                 </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon" style="background-color: #FE8604;">
-                        <i class="fas fa-birthday-cake"></i>
+
+                <!-- Semanales — verde -->
+                <div class="srv-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="srv-circle" style="--srv-color: #A1CD3A;">
+                        <i class="fas fa-children"></i>
                     </div>
-                    <h3>Servicio en Fiesta</h3>
-                    <p>Nos encargamos de crear un ambiente inolvidable para los peques en cumpleaños, bodas, bautizos.</p>
-                    <div class="service-details">
-                        <span class="detail-badge">Eventos especiales</span>
-                    </div>
+                    <span class="srv-name">semanales</span>
+                    <span class="srv-badge">Desde 20 horas/semana</span>
                 </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon" style="background-color: #FC2680;">
-                        <i class="fas fa-plane"></i>
+
+                <!-- Fijos — morado -->
+                <div class="srv-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="srv-circle" style="--srv-color: #793AB8;">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Servicio de Viajes</h3>
-                    <p>Asegúrate de que tu pequeño esté acompañado durante las vacaciones mientras disfrutas.</p>
-                    <div class="service-details">
-                        <span class="detail-badge">Acompañamiento completo</span>
-                    </div>
+                    <span class="srv-name">fijos</span>
+                    <span class="srv-badge">Mín. 3 días/semana · 3 hrs/día</span>
                 </div>
+
+                <!-- Viajes — amarillo -->
+                <div class="srv-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="srv-circle" style="--srv-color: #F5C518;">
+                        <i class="fas fa-earth-americas"></i>
+                    </div>
+                    <span class="srv-name">viajes</span>
+                    <span class="srv-badge">Acompañamiento completo</span>
+                </div>
+
             </div>
         </div>
     </section>
@@ -803,5 +852,8 @@
     <script src="./assets/js/wizard.js"></script>
     <script src="./assets/js/team_puzzle.js"></script>
     <script src="./assets/js/main.js"></script>
+
+    <!-- Toast notification container -->
+    <div id="toastContainer" class="toast-container"></div>
 </body>
 </html>

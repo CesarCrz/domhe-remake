@@ -1,4 +1,4 @@
-const CACHE_NAME = 'domhe-kids-v1';
+const CACHE_NAME = 'domhe-kids-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -21,9 +21,62 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(ASSETS_TO_CACHE))
   );
+  self.skipWaiting();
 });
 
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+function getNavigationFallback(requestUrl) {
+  const url = new URL(requestUrl);
+  const path = url.pathname;
+
+  if (path.endsWith('/kids') || path.endsWith('/kids/')) {
+    return './index.html';
+  }
+
+  if (path.endsWith('/kids/draw') || path.endsWith('/kids/draw/')) {
+    return './draw.html';
+  }
+
+  if (path.endsWith('/kids/memory') || path.endsWith('/kids/memory/')) {
+    return './memory.html';
+  }
+
+  if (path.endsWith('/kids/puzzle') || path.endsWith('/kids/puzzle/')) {
+    return './puzzle.html';
+  }
+
+  return null;
+}
+
 self.addEventListener('fetch', event => {
+  if (event.request.mode === 'navigate') {
+    const fallbackPath = getNavigationFallback(event.request.url);
+
+    event.respondWith(
+      fetch(event.request)
+        .then(response => response)
+        .catch(() => {
+          if (fallbackPath) {
+            return caches.match(fallbackPath);
+          }
+          return caches.match('./index.html');
+        })
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
