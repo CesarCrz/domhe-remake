@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Matemáticas | DOMHE Kids</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/kids.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <a href="./" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+            <div class="logo-area">
+                <img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png" alt="DOMHE Logo" class="logo">
+                <h1>Matemáticas</h1>
+            </div>
+        </header>
+
+        <main class="game-area math-area">
+
+            <!-- Barra de ositos -->
+            <div class="bears-bar">
+                <div class="bears-track" id="bearsTrack">
+                    <!-- JS inserta los 10 ositos -->
+                </div>
+                <p class="bears-label" id="bearsLabel">0 / 10 correctas</p>
+            </div>
+
+            <!-- Tarjeta de pregunta -->
+            <div class="math-card" id="mathCard">
+                <div class="math-op-display" id="mathQuestion">
+                    <span class="op-num" id="opA">—</span>
+                    <span class="op-sign" id="opSign">+</span>
+                    <span class="op-num" id="opB">—</span>
+                    <span class="op-eq">=</span>
+                    <span class="op-unknown">?</span>
+                </div>
+
+                <div class="math-input-row">
+                    <input type="number"
+                           id="mathInput"
+                           class="math-input"
+                           placeholder="Tu respuesta"
+                           inputmode="numeric"
+                           autocomplete="off">
+                    <button class="math-check-btn" id="checkBtn">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+
+                <!-- Feedback -->
+                <div class="math-feedback" id="mathFeedback"></div>
+            </div>
+
+            <!-- Marcador -->
+            <div class="math-score">
+                <span class="score-correct"><i class="fas fa-check-circle"></i> <span id="scoreCorrect">0</span> correctas</span>
+                <span class="score-wrong"><i class="fas fa-times-circle"></i> <span id="scoreWrong">0</span> incorrectas</span>
+            </div>
+
+            <!-- Nuevo juego -->
+            <button class="btn btn-secondary math-reset" id="resetBtn">
+                <i class="fas fa-redo"></i> Nuevo juego
+            </button>
+
+        </main>
+    </div>
+
+    <script src="./assets/js/utils.js"></script>
+    <script src="./assets/js/math.js"></script>
+</body>
+</html>

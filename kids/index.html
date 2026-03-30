@@ -11,14 +11,44 @@
     <link rel="stylesheet" href="./assets/css/kids.css">
 </head>
 <body class="menu-body">
-    <div class="app-container">
-        <header class="app-header" style="flex-direction: column; text-align: center;">
-            <div class="logo-area" style="flex-direction: column; align-items: center;">
-                <a href="../index.html"><img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png" alt="DOMHE Logo" class="logo" style="width: 60px; margin-bottom: 10px;"></a>
-                <h1 style="font-size: 2.5rem;">Kids Zone</h1>
+
+    <!-- ── Navbar (igual que landing page) ─────────────────────────────── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png"
+                     alt="DOMHE Nanny Logo" class="logo-img">
+                <a href="../index.html" class="logo-text">
+                    <img src="https://res.cloudinary.com/dwoau0ajc/image/upload/v1753328925/WhatsApp_Image_2025-07-23_at_19.59.18_bw4agw.png"
+                         alt="DOMHE Nanny">
+                </a>
             </div>
-            <p class="subtitle" style="margin-top: 10px;">¡Juega sin conexión en donde estés!</p>
-        </header>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="../index.html#inicio"        class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="../index.html#nosotros"      class="nav-link">Nosotros</a></li>
+                <li class="nav-item"><a href="../index.html#servicios"     class="nav-link">Servicios</a></li>
+                <li class="nav-item"><a href="../index.html#testimonios"   class="nav-link">Testimonios</a></li>
+                <li class="nav-item"><a href="../index.html#contacto"      class="nav-link">Contacto</a></li>
+                <li class="nav-item"><a href="./"                          class="nav-link kids-nav-link">Kids Zone 🧸</a></li>
+                <li class="nav-item"><a href="../login"                    class="nav-link login-btn">Login</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Contenido principal ──────────────────────────────────────────── -->
+    <div class="app-container kids-menu-container">
+
+        <div class="kids-hero">
+            <h1 class="kids-hero-title">Kids Zone 🧸</h1>
+            <p class="subtitle">¡Juega sin conexión en donde estés!</p>
+        </div>
 
         <main class="menu-area">
             <div class="games-grid">
@@ -27,50 +57,61 @@
                     <h3>Pizarrón Mágico</h3>
                     <p>Dibuja y crea obras de arte.</p>
                 </a>
-                
+
                 <a href="./memory" class="game-card">
                     <div class="game-icon" style="background:#15AAE2;"><i class="fas fa-layer-group"></i></div>
                     <h3>Memorama</h3>
                     <p>Encuentra los pares ocultos.</p>
                 </a>
-                
+
                 <a href="./puzzle" class="game-card">
                     <div class="game-icon" style="background:#A1CD3A;"><i class="fas fa-puzzle-piece"></i></div>
                     <h3>Rompecabezas</h3>
                     <p>Arma al osito Domhe.</p>
                 </a>
+
+                <a href="./math" class="game-card">
+                    <div class="game-icon" style="background:#FE8604;"><i class="fas fa-calculator"></i></div>
+                    <h3>Matemáticas</h3>
+                    <p>Sumas, restas y multiplicaciones.</p>
+                </a>
             </div>
         </main>
 
-        <!-- Name Prompt Modal -->
-        <div id="name-modal" class="victory-modal" style="display: flex;">
-            <div class="victory-content">
-                <div class="victory-icon"><i class="fas fa-smile"></i></div>
-                <h2 style="font-family: 'Fredoka One', cursive; color: #E81A63; margin-bottom: 20px;">¡Hola!</h2>
-                <p>¿Cómo te llamas?</p>
-                <input type="text" id="kid-name-input" placeholder="Escribe tu nombre aquí" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 10px; border: 2px solid #FF98B8; font-family: 'Quicksand', sans-serif; font-size: 1.1rem; text-align: center;">
-                <button id="save-name-btn" class="btn">¡A Jugar!</button>
-            </div>
-        </div>
-        
         <!-- Offline Indicator -->
         <div id="offline-badge" class="offline-badge" style="display:none;">
             <i class="fas fa-wifi-slash"></i> Modo Offline Activo
         </div>
     </div>
 
+    <!-- ── Modal: pedir nombre ───────────────────────────────────────────── -->
+    <div id="name-modal" class="victory-modal" style="display: flex;">
+        <div class="victory-content">
+            <div class="victory-icon"><i class="fas fa-smile"></i></div>
+            <h2 style="font-family: 'Fredoka One', cursive; color: #E81A63; margin-bottom: 20px;">¡Hola!</h2>
+            <p>¿Cómo te llamas?</p>
+            <input type="text" id="kid-name-input" placeholder="Escribe tu nombre aquí"
+                   style="width:100%;padding:12px;margin-bottom:20px;border-radius:10px;
+                          border:2px solid #FF98B8;font-family:'Quicksand',sans-serif;
+                          font-size:1.1rem;text-align:center;">
+            <button id="save-name-btn" class="btn">¡A Jugar!</button>
+        </div>
+    </div>
+
     <script>
-        // Handle Name Prompt
+        // ── Nombre del niño ──────────────────────────────────────────────
         window.addEventListener('DOMContentLoaded', () => {
-            const savedName = localStorage.getItem('domhe_kid_name');
-            const nameModal = document.getElementById('name-modal');
-            const nameInput = document.getElementById('kid-name-input');
-            const saveBtn = document.getElementById('save-name-btn');
+            const savedName  = localStorage.getItem('domhe_kid_name');
+            const nameModal  = document.getElementById('name-modal');
+            const nameInput  = document.getElementById('kid-name-input');
+            const saveBtn    = document.getElementById('save-name-btn');
+            const subtitle   = document.querySelector('.subtitle');
 
             if (savedName) {
                 nameModal.style.display = 'none';
-                document.querySelector('.subtitle').innerHTML = `¡Hola <b>${savedName}</b>! Juega sin conexión en donde estés.<br><a href="#" id="change-name-link" style="color:#FF98B8; font-size: 0.8rem;">Cambiar nombre</a>`;
-                
+                subtitle.innerHTML = `¡Hola <b>${savedName}</b>! Juega sin conexión en donde estés.<br>
+                    <a href="#" id="change-name-link" style="color:#FF98B8;font-size:0.8rem;">Cambiar nombre</a>`;
+
                 document.getElementById('change-name-link').addEventListener('click', (e) => {
                     e.preventDefault();
                     nameInput.value = savedName;
@@ -83,31 +124,48 @@
                 if (val) {
                     localStorage.setItem('domhe_kid_name', val);
                     nameModal.style.display = 'none';
-                    // force refresh to show name
                     location.reload();
                 }
             });
+
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') saveBtn.click();
+            });
         });
 
-        // Register Service Worker
+        // ── Hamburger toggle ─────────────────────────────────────────────
+        const hamburger = document.getElementById('hamburger');
+        const navMenu   = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ── Navbar scroll shadow ─────────────────────────────────────────
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // ── Service Worker ───────────────────────────────────────────────
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('SW registered!', reg))
-                .catch(err => console.log('SW registration failed', err));
+                    .catch(err => console.log('SW error', err));
             });
         }
-        
-        // Listen for offline status
-        window.addEventListener('offline', () => {
-            document.getElementById('offline-badge').style.display = 'block';
-        });
-        window.addEventListener('online', () => {
-            document.getElementById('offline-badge').style.display = 'none';
-        });
-        if (!navigator.onLine) {
-            document.getElementById('offline-badge').style.display = 'block';
-        }
+
+        // ── Offline badge ────────────────────────────────────────────────
+        window.addEventListener('offline', () => { document.getElementById('offline-badge').style.display = 'block'; });
+        window.addEventListener('online',  () => { document.getElementById('offline-badge').style.display = 'none'; });
+        if (!navigator.onLine) document.getElementById('offline-badge').style.display = 'block';
     </script>
 </body>
 </html>

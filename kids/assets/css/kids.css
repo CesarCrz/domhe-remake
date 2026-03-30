@@ -5,6 +5,13 @@
     --primary-dark: #E81A63;
     --text-color: #73003A;
     --white: #FFFFFF;
+    /* Navbar variables (mismas que landing) */
+    --primary-color: #FC2680;
+    --secondary-purple: #793AB8;
+    --text-dark: #333333;
+    --shadow: 0 2px 10px rgba(0,0,0,0.08);
+    --transition: all 0.3s ease;
+    --border-radius: 30px;
 }
 
 * {
@@ -318,3 +325,410 @@ body {
     transition: transform 0.2s, opacity 0.2s;
 }
 .jigsaw-piece.empty { opacity: 0; pointer-events: none; }
+
+/* ============================================================
+   NAVBAR — igual que landing page
+   ============================================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(250, 246, 241, 0.97);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 10px 0;
+    transition: var(--transition);
+    box-shadow: none;
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 60px;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+}
+
+.logo-text img {
+    width: 200px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.logo-text {
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    font-size: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.kids-nav-link {
+    color: #FF98B8 !important;
+    font-weight: 700;
+}
+
+.login-btn {
+    background: var(--primary-color);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: var(--border-radius);
+}
+
+.login-btn:hover {
+    background: var(--secondary-purple);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    border-radius: 3px;
+    transition: var(--transition);
+    display: block;
+}
+
+/* ── Kids menu con navbar ────────────────────────────────────── */
+.kids-menu-container {
+    padding-top: 90px;
+    height: auto;
+    min-height: 100vh;
+}
+
+.kids-hero {
+    text-align: center;
+    padding: 30px 20px 10px;
+}
+
+.kids-hero-title {
+    font-family: 'Fredoka One', cursive;
+    color: var(--primary);
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #777;
+    padding-bottom: 6px;
+}
+
+/* ============================================================
+   JUEGO DE MATEMÁTICAS
+   ============================================================ */
+
+/* Permite seleccionar/escribir en inputs dentro del juego */
+.math-area input {
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.math-area {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 16px 30px;
+    overflow-y: auto;
+}
+
+/* ── Barra de ositos ──────────────────────────────────────── */
+.bears-bar {
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+}
+
+.bears-track {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.bear-unit {
+    font-size: 1.9rem;
+    filter: grayscale(100%) opacity(0.28);
+    transition: filter 0.4s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.bear-unit.filled {
+    filter: none;
+    transform: scale(1.15);
+    animation: bearPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bearPop {
+    0%   { transform: scale(0.5); }
+    70%  { transform: scale(1.35); }
+    100% { transform: scale(1.15); }
+}
+
+.bears-label {
+    font-size: 0.82rem;
+    color: #999;
+    font-weight: 600;
+}
+
+/* ── Tarjeta de la pregunta ───────────────────────────────── */
+.math-card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 32px 28px 24px;
+    box-shadow: 0 10px 32px rgba(255, 152, 184, 0.22);
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.math-op-display {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.op-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.op-sign {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.5rem;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.op-eq {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.5rem;
+    color: #aaa;
+    line-height: 1;
+}
+
+.op-unknown {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: var(--primary-dark);
+    line-height: 1;
+}
+
+/* ── Input y botón ────────────────────────────────────────── */
+.math-input-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+.math-input {
+    flex: 1;
+    padding: 14px 18px;
+    font-size: 1.6rem;
+    font-family: 'Fredoka One', cursive;
+    font-weight: 400;
+    color: var(--text-color);
+    border: 3px solid #FFD6E8;
+    border-radius: 16px;
+    background: #FFF8FB;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+    /* quitar flechas de number input */
+    -moz-appearance: textfield;
+}
+
+.math-input::-webkit-outer-spin-button,
+.math-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.math-input:focus { border-color: var(--primary); }
+
+.math-input.pulse {
+    animation: inputPulse 0.35s ease;
+}
+
+@keyframes inputPulse {
+    0%, 100% { border-color: #FFD6E8; }
+    50%       { border-color: var(--primary-dark); transform: scale(1.03); }
+}
+
+.math-check-btn {
+    background: var(--primary-dark);
+    color: white;
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+}
+
+.math-check-btn:active { transform: scale(0.92); }
+.math-check-btn:hover  { background: #C2004F; }
+
+/* ── Feedback ─────────────────────────────────────────────── */
+.math-feedback {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    text-align: center;
+    min-height: 2rem;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.math-feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feedback-correct { color: #25C16A; }
+.feedback-wrong   { color: var(--primary-dark); }
+
+/* ── Shake ────────────────────────────────────────────────── */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-8px); }
+    40%       { transform: translateX(8px); }
+    60%       { transform: translateX(-6px); }
+    80%       { transform: translateX(6px); }
+}
+
+.math-card.shake {
+    animation: shake 0.45s ease;
+}
+
+/* ── Marcador ─────────────────────────────────────────────── */
+.math-score {
+    display: flex;
+    gap: 24px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.score-correct { color: #25C16A; }
+.score-wrong   { color: var(--primary-dark); }
+
+/* ── Botón reset ──────────────────────────────────────────── */
+.math-reset {
+    width: auto;
+    padding: 10px 28px;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   RESPONSIVE — Navbar mobile
+   ============================================================ */
+@media (max-width: 768px) {
+    .logo-img  { width: 40px; }
+    .logo-text img { width: 140px; height: 35px; }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 20px 0;
+        gap: 0;
+    }
+
+    .nav-menu .nav-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-menu.active { left: 0; }
+
+    .hamburger { display: flex; }
+
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .kids-menu-container { padding-top: 80px; }
+
+    .op-num, .op-unknown { font-size: 3rem; }
+    .op-sign, .op-eq     { font-size: 2.5rem; }
+    .bear-unit            { font-size: 1.6rem; }
+}

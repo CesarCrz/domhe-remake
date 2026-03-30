@@ -71,12 +71,13 @@
     filter: grayscale(0%) opacity(1);
 }
 
+
 .puzzle-hint {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.88);
     color: #E81A63;
     padding: 10px 20px;
     border-radius: 20px;
@@ -84,8 +85,10 @@
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.3s;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Quicksand', sans-serif;
     text-align: center;
+    z-index: 2;
+    white-space: nowrap;
 }
 
 .puzzle-piece:hover .puzzle-hint, .puzzle-piece.colored .puzzle-hint {

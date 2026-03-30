@@ -710,10 +710,10 @@ h6 {
   color: var(--srv-color);
 }
 
-/* Cursive service name */
+/* Service name */
 .srv-name {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.75rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #444;
   line-height: 1;
@@ -1683,7 +1683,7 @@ h6 {
   }
 
   .srv-name {
-    font-size: 1.45rem;
+    font-size: 1rem;
   }
 
   .contact-form {

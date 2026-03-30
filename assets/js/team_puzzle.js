@@ -38,7 +38,7 @@ const nanniesData = [
         activities: "Primeros auxilios, Cambio de pañales, Baño a RN",
         education: "Lic. Médico Cirujano y Partero",
         references: [
-            { family: "Familia Soto", stars: 5, text: "Mady es muy observadora y supo identificar las necesidades de nuestra hija desde el primer día. ¡Excelente!" },
+            { family: "Mamá de A.", stars: 5, text: "Mady es una chava súper tierna, transmite mucha paz, súper puntual esa cualidad me encanta!!! Muy responsable, atenta y respetuosa. la paz que transmite por sur tan tranquila me encanta para que esté con mi niña de 1 año y medio 💖 me deja muy tranquila !!. ¡Excelente!" },
             { family: "Familia Morales", stars: 5, text: "Su formación en psicología la hace única. Ayudó mucho a nuestro hijo con sus rutinas de sueño y emociones." },
             { family: "Familia Peña", stars: 5, text: "Nos sentimos muy seguros dejando a nuestros hijos con Mady. Muy creativa y siempre pendiente de su bienestar." }
         ]
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         piece.innerHTML = `
             <img src="${nanny.photo}" alt="${nanny.name}">
-            <div class="puzzle-hint"><i class="fas fa-hand-pointer"></i><br>¡Tócame!</div>
+            <div class="puzzle-hint"><i class="fas fa-hand-pointer"></i><br>¡Haz clic!</div>
         `;
 
         piece.addEventListener('click', () => {
