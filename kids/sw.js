@@ -1,15 +1,17 @@
-const CACHE_NAME = 'domhe-kids-v2';
+const CACHE_NAME = 'domhe-kids-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './draw.html',
   './memory.html',
   './puzzle.html',
+  './math.html',
   './assets/css/kids.css',
   './assets/js/utils.js',
   './assets/js/draw.js',
   './assets/js/memory.js',
   './assets/js/puzzle.js',
+  './assets/js/math.js',
   'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
   'https://res.cloudinary.com/dwoau0ajc/image/upload/v1753327639/WhatsApp_Image_2025-07-23_at_19.59.09_yd4dtt.png',
@@ -55,6 +57,10 @@ function getNavigationFallback(requestUrl) {
 
   if (path.endsWith('/kids/puzzle') || path.endsWith('/kids/puzzle/')) {
     return './puzzle.html';
+  }
+
+  if (path.endsWith('/kids/math') || path.endsWith('/kids/math/')) {
+    return './math.html';
   }
 
   return null;

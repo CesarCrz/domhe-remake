@@ -60,7 +60,7 @@ const nanniesData = [
     {
         id: 5,
         name: "Karen",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489416/WhatsApp_Image_2026-03-25_at_19.43.18_gk4fus.jpg",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774936203/WhatsApp_Image_2026-03-30_at_14.26.44_rzbcch.jpg",
         traits: "Creatividad, Responsabilidad y Paciencia",
         ages: "Recién nacidos a 10 años",
         activities: "Primeros Auxilios, Cambios a RN, Baño a RN, Apoyo en Tareas",
@@ -74,7 +74,7 @@ const nanniesData = [
     {
         id: 6,
         name: "Lupita",
-        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774489370/WhatsApp_Image_2026-03-25_at_19.41.20_ecri7e.jpg",
+        photo: "https://res.cloudinary.com/dwoau0ajc/image/upload/v1774936204/WhatsApp_Image_2026-03-30_at_14.35.21_fgq64z.jpg",
         traits: "Responsable, Divertida, Dinámcia",
         ages: "Recién Nacidos a 10 años",
         activities: "Primeros Auxilios, Cambio de pañales, Baño a RN, Actividades Lúdicas y Recreativas",
